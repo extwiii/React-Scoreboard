@@ -2,61 +2,30 @@ import React, { Component, PropTypes } from 'react';
 
 export default class Stopwatch extends Component {
   state = {
-    running: false,
-    previouseTime: 0,
-    elapsedTime: 0,
+    count: 0
   };
 
-  componentDidMount() {
-    this.interval = setInterval(this.onTick);
-  }
 
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
-  onStart = () => {
+  onPlus = () => {
     this.setState({
-      running: true,
-      previousTime: Date.now(),
+      count: this.state.count + 1,
     });
   };
 
-  onStop = () => {
+  onMinus = () => {
     this.setState({
-      running: false,
+      count: this.state.count - 1,
     });
   };
 
-  onReset = () => {
-    this.setState({
-      elapsedTime: 0,
-      previousTime: Date.now(),
-    });
-  };
-
-  onTick = () => {
-    if (this.state.running) {
-      var now = Date.now();
-      this.setState({
-        elapsedTime: this.state.elapsedTime + (now - this.state.previousTime),
-        previousTime: Date.now(),
-      });
-    }
-  };
 
   render() {
-    const seconds = Math.floor(this.state.elapsedTime / 1000);
     return (
       <div className="stopwatch" >
-        <h2>Stopwatch</h2>
-        <div className="stopwatch-time"> {seconds} </div>
-        { this.state.running ?
-          <button onClick={this.onStop}>Stop</button>
-          :
-          <button onClick={this.onStart}>Start</button>
-        }
-        <button onClick={this.onReset}>Reset</button>
+        <h2>Counter</h2>
+        <div className="stopwatch-time"> {this.state.count} </div>
+          <button onClick={this.onPlus}> + </button>
+          <button onClick={this.onMinus}> - </button>
       </div>
     );
   }
