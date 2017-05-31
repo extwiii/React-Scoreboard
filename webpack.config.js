@@ -2,8 +2,9 @@ module.exports = {
   devtool: 'inline-sourcemap',
   entry: './index.js',
   output: {
+    path: 'dist',
     filename: 'bundle.js'
-  },
+},
   module: {
     loaders: [
       {
@@ -13,6 +14,10 @@ module.exports = {
           'react-hot',
           'babel'
         ]
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
       }
     ]
   }
