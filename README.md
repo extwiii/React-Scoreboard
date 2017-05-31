@@ -1,6 +1,8 @@
 # React-Scoreboard
 React.js - Redux Scoreboard SPA
 
+Live Demo : [React-Scoreboard](https://extwiii-react-scoreboard.firebaseapp.com/)
+
 Features
 --------
 - React.js 
